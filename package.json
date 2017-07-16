@@ -1,7 +1,7 @@
 {
   "name": "pynsist",
   "version": "0.1.0",
-  "description": "Atom language support for nsL Assembler, including grammar, snippets and build system",
+  "description": "Snippets and build-system for pynsist, a tool to build Windows installers for your Python applications",
   "license": "MIT OR GPL-2.0",
   "author": {
     "name": "Jan T. Sott",
@@ -12,7 +12,7 @@
     "nsis",
     "nullsoft",
     "installer",
-    "setup"
+    "python"
   ],
   "repository": {
     "type": "git",
