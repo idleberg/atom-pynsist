@@ -22,7 +22,7 @@ module.exports = Pynsist =
       editor.save() if editor.isModified()
 
       getPath (pathToPynsist) ->
-        clearConsole()
+        clearConsole(consolePanel)
 
         # Let's go
         pynsist = spawn pathToPynsist, args
@@ -40,7 +40,7 @@ module.exports = Pynsist =
           try
             consolePanel.log(line.toString())
           catch
-            console.error(line.toString())
+            console.log(line.toString())
 
           outScript = detectOutput(scriptPath, line, { string: "Writing NSI file to ", regex: /Writing NSI file to (.*)\r?\n/g }) if outScript is ""
           outFile = detectOutput(scriptPath, line, { string: "Installer written to ", regex: /Installer written to (.*)\r?\n/g }) if outFile is "" and runMakensis is true
