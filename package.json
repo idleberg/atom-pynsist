@@ -1,0 +1,51 @@
+{
+  "name": "pynsist",
+  "version": "0.0.0",
+  "description": "Atom language support for nsL Assembler, including grammar, snippets and build system",
+  "license": "MIT OR GPL-2.0",
+  "author": {
+    "name": "Jan T. Sott",
+    "url": "http://github.com/idleberg"
+  },
+  "keywords": [
+    "pynsist",
+    "nsis",
+    "nullsoft",
+    "installer",
+    "setup"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/idleberg/atom-pynsist"
+  },
+  "main": "lib/main.coffee",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "package-deps": [
+    "language-ini"
+  ],
+  "consumedServices": {
+    "console-panel": {
+      "versions": {
+        "^1.0.0": "consumeConsolePanel"
+      }
+    }
+  },
+  "dependencies": {
+    "atom-package-deps": "^4.6.0"
+  },
+  "devDependencies": {
+    "coffeelint-stylish": "^0.1.2",
+    "gulp": "github:gulpjs/gulp#4.0",
+    "gulp-coffeelint": "^0.6.0",
+    "gulp-debug": "^3.1.0",
+    "gulp-jshint": "^2.0.4",
+    "gulp-jsonlint": "^1.2.0",
+    "gulp-lesshint": "^4.0.0",
+    "jshint": "^2.9.5"
+  },
+  "scripts": {
+    "test": "gulp lint"
+  }
+}

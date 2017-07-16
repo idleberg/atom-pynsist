@@ -1,0 +1,18 @@
+fileTypes: [
+  "installer.cfg"
+]
+name: "Pynsist Configuration"
+patterns: [
+  {
+    include: "source.ini"
+  }
+  {
+    match: "\\b([0-9]+(\\.[0-9]+)*)\\b"
+    name: "constant.numeric.pynsist"
+  }
+  {
+    match: "\\$(\\{PRODUCT_NAME\\}|ADMINTOOLS|APPDATA|CDBURN_AREA|COMMONFILES|COOKIES|DESKTOP|DOCUMENTS|EXEDIR|FAVORITES|FONTS|HISTORY|INSTDIR|INTERNET_CACHE|LOCALAPPDATA|MUSIC|NETHOOD|OUTDIR|PICTURES|PLUGINSDIR|PRINTHOOD|PROFILE|PROGRAMFILES(32|64)?|QUICKLAUNCH|RECENT|RESOURCES_LOCALIZED|RESOURCES|SENDTO|SMPROGRAMS|SMSTARTUP|STARTMENU|SYSDIR|TEMP|TEMPLATES|VIDEOS|WINDIR)\\b"
+    name: "variable.other.nsis"
+  }
+]
+scopeName: "source.ini.pynsist"
