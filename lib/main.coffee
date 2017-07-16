@@ -52,7 +52,7 @@ module.exports = PynsistCore =
     @subscriptions.add atom.commands.add "atom-workspace", "pynsist:compile-installer": => generate(@consolePanel, true)
 
     satisfyDependencies() if atom.config.get("pynsist.manageDependencies") is true
-    isPathSetup() if atom.config.get("language-nsl.mutePathWarning") is false and platform() is "win32"
+    isPathSetup() if atom.config.get("pynsist.mutePathWarning") is false and platform() is "win32"
 
   deactivate: ->
     @subscriptions?.dispose()
