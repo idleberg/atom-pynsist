@@ -67,30 +67,35 @@ module.exports = Util =
         )
 
   notifyOnSucess: (outScript, outFile) ->
+    { platform } = require "os"
+
     buttons = []
 
     if outFile isnt ""
       message =  "Successfully compiled installer"
-      buttons.push({
-        text: 'Run'
-        onDidClick: ->
-          Util.runInstaller(outFile)
-          notification.dismiss()
-      })
+      if platform() is "win32" or atom.config.get("pynsist.useWineToRun") is true
+        buttons.push({
+          text: "Run Installer"
+          onDidClick: ->
+            Util.runInstaller(outFile)
+            notification.dismiss()
+        })
     else
       message = "Successfully generated script"
 
-    buttons.push({
-      text: 'Open'
-      onDidClick: ->
-        atom.workspace.open(outScript)
-        notification.dismiss()
-    }
-    {
-      text: 'Cancel'
-      onDidClick: ->
-        notification.dismiss()
-    })
+    buttons.push(
+      {
+        text: "Open Script"
+        onDidClick: ->
+          atom.workspace.open(outScript)
+          notification.dismiss()
+      }
+      {
+        text: "Cancel"
+        onDidClick: ->
+          notification.dismiss()
+      }
+    )
 
     notification = atom.notifications.addSuccess(
       message,
@@ -99,7 +104,7 @@ module.exports = Util =
     ) if atom.config.get("pynsist.showBuildNotifications")
 
   runInstaller: (outFile) ->
-    { spawn, exec } = require "child_process"
+    { exec, spawn } = require "child_process"
     { platform } = require "os"
 
     if platform() is "win32"
