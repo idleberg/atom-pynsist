@@ -109,7 +109,7 @@ module.exports = Util =
 
     if platform() is "win32"
       try
-        Setting shell to true seems to prevent spawn UNKNOWN errors
+        # Setting shell to true seems to prevent spawn UNKNOWN errors
         spawn outFile, shell: true
       catch error
         atom.notifications.addWarning("**pynsist**", detail: error, dismissable: true)
