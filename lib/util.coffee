@@ -104,13 +104,21 @@ module.exports = Util =
     ) if atom.config.get("pynsist.showBuildNotifications")
 
   runInstaller: (outFile) ->
-    { exec, spawn } = require "child_process"
+    { spawn } = require "child_process"
     { platform } = require "os"
 
     if platform() is "win32"
-      return exec "#{outFile}"
+      try
+        Setting shell to true seems to prevent spawn UNKNOWN errors
+        spawn outFile, shell: true
+      catch error
+        atom.notifications.addWarning("**pynsist**", detail: error, dismissable: true)
+
     else if atom.config.get("pynsist.useWineToRun") is true
-      return spawn "wine", [ outFile ]
+      try
+        spawn "wine", [ outFile ]
+      catch error
+        atom.notifications.addWarning("**pynsist**", detail: error, dismissable: true)
 
   satisfyDependencies: () ->
     meta = require "../package.json"
