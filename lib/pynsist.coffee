@@ -49,7 +49,7 @@ module.exports = Pynsist =
           if errorCode is 0 and outScript isnt ""
             return notifyOnSucess(outScript, outFile) if atom.config.get("pynsist.showBuildNotifications")
           else
-            atom.notifications.addError("Something went wrong", dismissable: false) if atom.config.get("pynsist.showBuildNotifications")
+            atom.notifications.addError("**pynsist**", detail: "Something went wrong. See the console for details.", dismissable: false) if atom.config.get("pynsist.showBuildNotifications")
     else
       # Something went wrong
       atom.beep()
