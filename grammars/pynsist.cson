@@ -4,19 +4,105 @@ fileTypes: [
 name: "Pynsist Configuration"
 patterns: [
   {
-    include: "source.ini"
+    captures:
+      "1":
+        name: "punctuation.definition.comment.pynsist"
+    match: "^\\s*(;|#).*$\\n?"
+    name: "comment.line.semicolon.pynsist"
   }
   {
-    match: "\\b([0-9]+(\\.[0-9]+)*)\\b"
-    name: "constant.numeric.pynsist"
-  }
-  {
-    match: "\\$(ADMINTOOLS|APPDATA|CDBURN_AREA|COMMONFILES|COOKIES|DESKTOP|DOCUMENTS|EXEDIR|FAVORITES|FONTS|HISTORY|INSTDIR|INTERNET_CACHE|LOCALAPPDATA|MUSIC|NETHOOD|OUTDIR|PICTURES|PLUGINSDIR|PRINTHOOD|PROFILE|PROGRAMFILES(32|64)?|QUICKLAUNCH|RECENT|RESOURCES_LOCALIZED|RESOURCES|SENDTO|SMPROGRAMS|SMSTARTUP|STARTMENU|SYSDIR|TEMP|TEMPLATES|VIDEOS|WINDIR)\\b"
+    match: "(?i)\\$(ADMINTOOLS|APPDATA|CDBURN_AREA|COMMONFILES|COOKIES|DESKTOP|DOCUMENTS|EXEDIR|FAVORITES|FONTS|HISTORY|INSTDIR|INTERNET_CACHE|LOCALAPPDATA|MUSIC|NETHOOD|OUTDIR|PICTURES|PLUGINSDIR|PRINTHOOD|PROFILE|PROGRAMFILES(32|64)?|QUICKLAUNCH|RECENT|RESOURCES_LOCALIZED|RESOURCES|SENDTO|SMPROGRAMS|SMSTARTUP|STARTMENU|SYSDIR|TEMP|TEMPLATES|VIDEOS|WINDIR)"
     name: "variable.language.pynsist"
   }
   {
-    match: "\\$(\\{PRODUCT_NAME\\})\\b"
+    match: "(?i)\\$(\\{PRODUCT_NAME\\})"
     name: "constant.language.pynsist"
   }
+  {
+    match: "((0(x|X)[0-9a-fA-F]{3,6})|([0-9]+(\\.[0-9]+)*))\\b"
+    name: "constant.numeric.pynsist"
+  }
+  {
+    captures:
+      "1":
+        name: "punctuation.definition.section.pynsist"
+      "2":
+        name: "entity.section.pynsist"
+      "3":
+        name: "punctuation.definition.section.pynsist"
+    match: "^\\s*(\\[)(.*?)(\\])"
+    name: "entity.name.section.nsis"
+  }
+  {
+    captures:
+      "1":
+        name: "meta.property.pynsist"
+      "2":
+        name: "punctuation.definition.quote.pynsist"
+      "3":
+        name: "keyword.name.pynsist"
+      "4":
+        name: "punctuation.definition.quote.pynsist"
+      "5":
+        name: "punctuation.definition.equals.pynsist"
+      "6":
+        name: "meta.value.pynsist"
+      "7":
+        name: "punctuation.definition.quote.pynsist"
+      "8":
+        name: "string.name.value.pynsist"
+      "9":
+        name: "punctuation.definition.quote.pynsist"
+      "10":
+        name: "comment.declarationline.semicolon.pynsist"
+      "11":
+        name: "variable.language.pynsist"
+      "12":
+        name: "constant.language.pynsist"
+    match: "^(\\s*([\"'']?)(.+?)(\\2)\\s*(=))?\\n?"
+    name: "meta.declaration.pynsist"
+  }
+  {
+    begin: "\""
+    beginCaptures:
+      "0":
+        name: "punctuation.definition.string.begin.pynsist"
+    end: "\""
+    endCaptures:
+      "0":
+        name: "punctuation.definition.string.end.pynsist"
+    name: "string.quoted.double.pynsist"
+    patterns: [
+      {
+        match: "(?i)\\$(ADMINTOOLS|APPDATA|CDBURN_AREA|COMMONFILES|COOKIES|DESKTOP|DOCUMENTS|EXEDIR|FAVORITES|FONTS|HISTORY|INSTDIR|INTERNET_CACHE|LOCALAPPDATA|MUSIC|NETHOOD|OUTDIR|PICTURES|PLUGINSDIR|PRINTHOOD|PROFILE|PROGRAMFILES(32|64)?|QUICKLAUNCH|RECENT|RESOURCES_LOCALIZED|RESOURCES|SENDTO|SMPROGRAMS|SMSTARTUP|STARTMENU|SYSDIR|TEMP|TEMPLATES|VIDEOS|WINDIR)"
+        name: "variable.other.pynsist"
+      }
+      {
+        match: "(?i)\\$(\\{PRODUCT_NAME\\})"
+        name: "constant.language.pynsist"
+      }
+    ]
+  }
+  {
+    begin: "'"
+    beginCaptures:
+      "0":
+        name: "punctuation.definition.string.begin.pynsist"
+    end: "'"
+    endCaptures:
+      "0":
+        name: "punctuation.definition.string.end.pynsist"
+    name: "string.quoted.single.pynsist"
+    patterns: [
+      {
+        match: "(?i)\\$(ADMINTOOLS|APPDATA|CDBURN_AREA|COMMONFILES|COOKIES|DESKTOP|DOCUMENTS|EXEDIR|FAVORITES|FONTS|HISTORY|INSTDIR|INTERNET_CACHE|LOCALAPPDATA|MUSIC|NETHOOD|OUTDIR|PICTURES|PLUGINSDIR|PRINTHOOD|PROFILE|PROGRAMFILES(32|64)?|QUICKLAUNCH|RECENT|RESOURCES_LOCALIZED|RESOURCES|SENDTO|SMPROGRAMS|SMSTARTUP|STARTMENU|SYSDIR|TEMP|TEMPLATES|VIDEOS|WINDIR)"
+        name: "variable.other.pynsist"
+      }
+      {
+        match: "(?i)\\$(\\{PRODUCT_NAME\\})"
+        name: "constant.language.pynsist"
+      }
+    ]
+  }
 ]
-scopeName: "source.ini.pynsist"
+scopeName: "source.cfg.pynsist"
