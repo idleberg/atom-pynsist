@@ -1,4 +1,4 @@
-'.source.ini.pynsist':
+'.source.cfg.pynsist':
   '[Application]':
     body: '[Application]$0'
     leftLabelHTML: "<span class='syntax--entity syntax--name syntax--section syntax--group-title syntax--ini'>[]</span"

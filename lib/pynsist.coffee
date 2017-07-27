@@ -18,7 +18,7 @@ module.exports = Pynsist =
 
     args.push "--no-makensis" if runMakensis is false
 
-    if script? and scope is "source.ini.pynsist"
+    if script? and scope is "source.cfg.pynsist"
       editor.save() if editor.isModified()
 
       getPath (pathToPynsist) ->

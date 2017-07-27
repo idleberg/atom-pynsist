@@ -1,4 +1,4 @@
-'.source.ini.pynsist':
+'.source.cfg.pynsist':
   $ADMINTOOLS:
     body: "$ADMINTOOLS$1"
     description: "A directory where administrative tools are kept"
