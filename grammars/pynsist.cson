@@ -31,7 +31,7 @@ patterns: [
       "3":
         name: "punctuation.definition.section.pynsist"
     match: "^\\s*(\\[)(.*?)(\\])"
-    name: "entity.name.section.nsis"
+    name: "entity.name.section.pynsist"
   }
   {
     captures:
@@ -59,7 +59,7 @@ patterns: [
         name: "variable.language.pynsist"
       "12":
         name: "constant.language.pynsist"
-    match: "^(\\s*([\"'']?)(.+?)(\\2)\\s*(=))?\\n?"
+    match: "^(\\s*([\"'])?(bitness|console|directory|entry_point|exclude|extra_preamble|files|format|icon|include_msvcrt|installer_name|name|nsi_template|packages|parameters|publisher|pypi_wheels|script|target|version)(\\2)?\\s*)(?:=)"
     name: "meta.declaration.pynsist"
   }
   {
