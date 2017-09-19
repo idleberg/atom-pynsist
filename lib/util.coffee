@@ -54,7 +54,7 @@ module.exports = Util =
             {
               text: 'Open Settings'
               onDidClick: ->
-                atom.workspace.open("atom://config/packages/pynsist")
+                atom.workspace.open("atom://config/packages/pynsist", {pending: true, searchAllPanes: true})
                 notification.dismiss()
             }
             {
