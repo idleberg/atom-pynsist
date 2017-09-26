@@ -1,16 +1,10 @@
-uuid = ->
-  s4 = ->
-    Math.floor((1 + Math.random()) * 0x10000).toString(16).substring 1
-
-  "#{s4()}#{s4()}-#{s4()}-#{s4()}-#{s4()}-#{s4()}#{s4()}#{s4()}"
-
 module.exports = GoogleAnalytics =
   getCid: (cb) ->
     if @cid
       cb @cid
       return
     require("getmac").getMac (error, macAddress) ->
-      if error then cb(@cid = uuid()) else cb(@cid = require("crypto").createHash("sha1").update(macAddress, "utf8").digest("hex"))
+      if error then cb(@cid = require("./util").uuid()) else cb(@cid = require("crypto").createHash("sha1").update(macAddress, "utf8").digest("hex"))
     return
 
   sendEvent: (category, action, label, value) ->
