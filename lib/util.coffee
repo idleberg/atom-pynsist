@@ -135,12 +135,6 @@ module.exports = Util =
         console.log "Enabling package '#{v}'" if atom.inDevMode()
         atom.packages.enablePackage(v)
 
-  uuid: ->
-    s4 = ->
-      Math.floor((1 + Math.random()) * 0x10000).toString(16).substring 1
-
-    "#{s4()}#{s4()}-#{s4()}-#{s4()}-#{s4()}-#{s4()}#{s4()}#{s4()}"
-
   which: ->
     { platform } = require "os"
 
