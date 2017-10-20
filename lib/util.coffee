@@ -52,14 +52,15 @@ module.exports = Util =
           dismissable: true,
           buttons: [
             {
-              text: 'Open Settings'
+              text: "Open Settings"
+              className: "icon icon-gear"
               onDidClick: ->
                 require("./ga").sendEvent "util", "Open Settings"
                 atom.workspace.open("atom://config/packages/pynsist", {pending: true, searchAllPanes: true})
                 notification.dismiss()
             }
             {
-              text: 'Ignore',
+              text: "Ignore",
               onDidClick: ->
                 atom.config.set("pynsist.mutePathWarning", true)
                 notification.dismiss()
@@ -77,6 +78,7 @@ module.exports = Util =
       if platform() is "win32" or atom.config.get("pynsist.useWineToRun") is true
         buttons.push({
           text: "Run Installer"
+          className: "icon icon-playback-play"
           onDidClick: ->
             Util.runInstaller(outFile)
             notification.dismiss()
@@ -87,6 +89,7 @@ module.exports = Util =
     buttons.push(
       {
         text: "Open Script"
+        className: "icon icon-pencil"
         onDidClick: ->
           require("./ga").sendEvent "util", "Open Script"
           atom.workspace.open(outScript)
