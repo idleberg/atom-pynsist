@@ -23,6 +23,18 @@ patterns: [
     name: "constant.numeric.pynsist"
   }
   {
+    match: "(?i)\\b(?<=\\=)true\\b"
+    name: "constant.language.boolean.true.pynsist"
+  }
+  {
+    match: "(?i)\\b(?<=\\=)false\\b"
+    name: "constant.language.boolean.false.pynsist"
+  }
+  {
+    match: "(?i)\\b(?<=format\\=)bundled\\b"
+    name: "constant.language.boolean.false.pynsist"
+  }
+  {
     captures:
       "1":
         name: "punctuation.definition.section.pynsist"
