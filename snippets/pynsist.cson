@@ -67,6 +67,14 @@
     body: 'installer_name=${1:installer_name}$0'
     leftLabelHTML: "<span class='syntax--keyword syntax--other syntax--definition syntax--ini'>=</span>"
     prefix: 'installer_name'
+  'license_file (Rich Text Format)':
+    body: 'license_file=${1:license}.rtf$0'
+    leftLabelHTML: "<span class='syntax--keyword syntax--other syntax--definition syntax--ini'>=</span>"
+    prefix: 'license_file:rtf'
+  'license_file (Plain Text)':
+    body: 'license_file=${1:license}.txt$0'
+    leftLabelHTML: "<span class='syntax--keyword syntax--other syntax--definition syntax--ini'>=</span>"
+    prefix: 'license_file:txt'
   'name':
     body: 'name=${1:name}$0'
     leftLabelHTML: "<span class='syntax--keyword syntax--other syntax--definition syntax--ini'>=</span>"
