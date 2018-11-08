@@ -45,6 +45,11 @@ $ yarn || npm install
 
 This package automatically installs third-party packages it depends on. You can prevent this by disabling the *Manage Dependencies* option in the package settings.
 
+## Related
+
+- [sublime-pynsist](https://packagecontrol.io/packages/Pynsist)
+- [vscode-pynsist](https://marketplace.visualstudio.com/items?itemName=idleberg.pynsist)
+
 ## License
 
 This work is dual-licensed under [The MIT License](https://opensource.org/licenses/MIT) and the [GNU General Public License, version 2.0](https://opensource.org/licenses/GPL-2.0)
