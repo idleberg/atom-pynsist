@@ -71,7 +71,7 @@ patterns: [
         name: "variable.language.pynsist"
       "12":
         name: "constant.language.pynsist"
-    match: "^(\\s*([\"'])?(bitness|console|directory|entry_point|exclude|extra_preamble|extra_wheel_sources|files|format|icon|include_msvcrt|installer_name|license_file|name|nsi_template|packages|parameters|publisher|pypi_wheels|script|target|version)(\\2)?\\s*)(?:=)"
+    match: "^(\\s*([\"'])?(bitness|console|directory|entry_point|exclude|extra_preamble|extra_wheel_sources|files|format|icon|include_msvcrt|installer_name|license_file|local_wheels|name|nsi_template|packages|parameters|publisher|pypi_wheels|script|target|version)(\\2)?\\s*)(?:=)"
     name: "meta.declaration.pynsist"
   }
   {

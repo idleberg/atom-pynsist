@@ -67,6 +67,10 @@
     body: 'installer_name=${1:installer_name}$0'
     leftLabelHTML: "<span class='syntax--keyword syntax--other syntax--definition syntax--ini'>=</span>"
     prefix: 'installer_name'
+  'local_wheels':
+    body: 'local_wheels=${1:wheels}$0'
+    leftLabelHTML: "<span class='syntax--keyword syntax--other syntax--definition syntax--ini'>=</span>"
+    prefix: 'local_wheels'
   'license_file (Rich Text Format)':
     body: 'license_file=${1:license}.rtf$0'
     leftLabelHTML: "<span class='syntax--keyword syntax--other syntax--definition syntax--ini'>=</span>"
