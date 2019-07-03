@@ -5,11 +5,6 @@ module.exports = Pynsist =
     { spawn, exec } = require "child_process"
     { dirname } = require "path"
 
-    if runMakensis is true
-      require("./ga").sendEvent "pynsist", "Generate Script"
-    else
-      require("./ga").sendEvent "pynsist", "Compile Installer"
-
     editor = atom.workspace.getActiveTextEditor()
 
     unless editor?

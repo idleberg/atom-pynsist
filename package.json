@@ -3,6 +3,12 @@
   "version": "0.8.0",
   "description": "Snippets and build-system for pynsist, a tool to build Windows installers for your Python applications",
   "license": "MIT OR GPL-2.0",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode none --watch",
+    "lint": "gulp lint",
+    "test": "npm run lint"
+  },
   "author": {
     "name": "Jan T. Sott",
     "url": "http://github.com/idleberg"
@@ -18,13 +24,19 @@
     "type": "git",
     "url": "https://github.com/idleberg/atom-pynsist"
   },
-  "main": "lib/main.coffee",
+  "main": "lib/main",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
   "package-deps": [
     "console-panel"
   ],
+  "activationCommands": {
+    "atom-workspace": [
+      "pynsist:generate-script",
+      "pynsist:compile-installer"
+    ]
+  },
   "consumedServices": {
     "console-panel": {
       "versions": {
@@ -33,19 +45,23 @@
     }
   },
   "dependencies": {
-    "atom-package-deps": "^4.6.2",
-    "getmac": "^1.4.6"
+    "atom-package-deps": "^5.1.0"
   },
   "devDependencies": {
+    "coffee-loader": "^0.9.0",
+    "coffeescript": "^2.4.1",
     "coffeelint-stylish": "^0.1.2",
-    "gulp": "^4.0.0",
+    "gulp": "^4.0.2",
     "gulp-coffeelint": "^0.6.0",
     "gulp-debug": "^4.0.0",
-    "gulp-jsonlint": "^1.2.2",
-    "husky": "^1.1.3"
+    "gulp-jsonlint": "^1.3.0",
+    "husky": "^3.0.0",
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.5"
   },
-  "scripts": {
-    "precommit": "npm run test",
-    "test": "gulp lint"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test"
+    }
   }
 }

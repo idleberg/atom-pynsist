@@ -55,7 +55,6 @@ module.exports = Util =
               text: "Open Settings"
               className: "icon icon-gear"
               onDidClick: ->
-                require("./ga").sendEvent "util", "Open Settings"
                 atom.workspace.open("atom://config/packages/pynsist", {pending: true, searchAllPanes: true})
                 notification.dismiss()
             }
@@ -91,7 +90,6 @@ module.exports = Util =
         text: "Open Script"
         className: "icon icon-pencil"
         onDidClick: ->
-          require("./ga").sendEvent "util", "Open Script"
           atom.workspace.open(outScript)
           notification.dismiss()
       }
@@ -112,7 +110,6 @@ module.exports = Util =
     { spawn } = require "child_process"
     { platform } = require "os"
 
-    require("./ga").sendEvent "util", "Run Installer"
 
     if platform() is "win32"
       try
@@ -130,7 +127,6 @@ module.exports = Util =
   satisfyDependencies: () ->
     meta = require "../package.json"
 
-    require("./ga").sendEvent "util", "Satisfy Dependencies"
     require("atom-package-deps").install(meta.name)
 
     for k, v of meta["package-deps"]
