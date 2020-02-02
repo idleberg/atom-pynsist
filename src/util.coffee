@@ -12,7 +12,7 @@ module.exports = Util =
     try
       consolePanel.clear()
     catch
-      console.clear() if @getConfig("clearConsole")
+      console.clear() if Util.getConfig("clearConsole")
 
   detectOutput: (relativePath, line, needle) ->
     { existsSync } = require "fs"
@@ -32,7 +32,7 @@ module.exports = Util =
     { spawn } = require "child_process"
 
     # If stored, return pathToPynsist
-    pathToPynsist = @getConfig("pathToPynsist")
+    pathToPynsist = Util.getConfig("pathToPynsist")
     if pathToPynsist.length > 0 and pathToPynsist isnt "pynsist"
       return callback(pathToPynsist)
 
@@ -51,7 +51,7 @@ module.exports = Util =
   isPathSetup: () ->
     { access, constants} = require "fs"
 
-    pathToPynsist = @getConfig("pathToPynsist")
+    pathToPynsist = Util.getConfig("pathToPynsist")
 
     access pathToPynsist, constants.R_OK | constants.W_OK, (error) ->
       if error
@@ -82,7 +82,7 @@ module.exports = Util =
 
     if outFile isnt ""
       message =  "Successfully compiled installer"
-      if platform() is "win32" or @getConfig("useWineToRun") is true
+      if platform() is "win32" or Util.getConfig("useWineToRun") is true
         buttons.push({
           text: "Run Installer"
           className: "icon icon-playback-play"
@@ -112,7 +112,7 @@ module.exports = Util =
       message,
       dismissable: true,
       buttons: buttons
-    ) if @getConfig("showBuildNotifications")
+    ) if Util.getConfig("showBuildNotifications")
 
   runInstaller: (outFile) ->
     { spawn } = require "child_process"
@@ -126,7 +126,7 @@ module.exports = Util =
       catch error
         atom.notifications.addWarning("**pynsist**", detail: error, dismissable: true)
 
-    else if @getConfig("useWineToRun") is true
+    else if Util.getConfig("useWineToRun") is true
       try
         spawn "wine", [ outFile ]
       catch error
