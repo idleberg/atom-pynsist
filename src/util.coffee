@@ -124,16 +124,6 @@ module.exports = Util =
       catch error
         atom.notifications.addWarning("**pynsist**", detail: error, dismissable: true)
 
-  satisfyDependencies: () ->
-    meta = require "../package.json"
-
-    require("atom-package-deps").install(meta.name)
-
-    for k, v of meta["package-deps"]
-      if atom.packages.isPackageDisabled(v)
-        console.log "Enabling package '#{v}'" if atom.inDevMode()
-        atom.packages.enablePackage(v)
-
   which: ->
     { platform } = require "os"
 
