@@ -1,6 +1,6 @@
 {
   "name": "pynsist",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "description": "Snippets and build-system for pynsist, a tool to build Windows installers for your Python applications",
   "license": "MIT OR GPL-2.0",
   "scripts": {
