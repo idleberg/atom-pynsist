@@ -45,7 +45,7 @@ module.exports = Pynsist =
           outScript = detectOutput(scriptPath, line, { string: "Writing NSI file to ", regex: /Writing NSI file to (.*)\r?\n/g }) if outScript is ""
           outFile = detectOutput(scriptPath, line, { string: "Installer written to ", regex: /Installer written to (.*)\r?\n/g }) if outFile is "" and runMakensis is true
 
-        pynsist.on "close", ( errorCode ) ->
+        pynsist.on "exit", ( errorCode ) ->
           if errorCode is 0 and outScript isnt ""
             return notifyOnSucess(outScript, outFile) if getConfig("showBuildNotifications")
           else
