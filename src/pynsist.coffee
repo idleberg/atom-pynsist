@@ -49,7 +49,26 @@ module.exports = Pynsist =
           if errorCode is 0 and outScript isnt ""
             return notifyOnSucess(outScript, outFile) if getConfig("showBuildNotifications")
           else
-            atom.notifications.addError("**pynsist**", detail: "Something went wrong. See the console for details.", dismissable: false) if getConfig("showBuildNotifications")
+            notification = atom.notifications.addError(
+              "**pynsist**",
+              detail: "Something went wrong. See the console for details.",
+              dismissable: true,
+              buttons: [
+                {
+                  text: "Open Console"
+                  className: "icon icon-code"
+                  onDidClick: ->
+                    atom.openDevTools()
+                    notification.dismiss()
+                }
+                {
+                  text: "Cancel",
+                  onDidClick: ->
+                    notification.dismiss()
+                }
+              ]
+
+            ) if getConfig("showBuildNotifications")
     else
       # Something went wrong
       atom.beep()
