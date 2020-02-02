@@ -1,10 +1,18 @@
 module.exports = Util =
 
+  getConfig: (key = "") ->
+    meta = require "../package.json"
+
+    if key?
+      return atom.config.get("#{meta.name}.#{key}")
+
+    return atom.config.get("#{meta.name}")
+
   clearConsole: (consolePanel) ->
     try
       consolePanel.clear()
     catch
-      console.clear() if atom.config.get("pynsist.clearConsole")
+      console.clear() if @getConfig("clearConsole")
 
   detectOutput: (relativePath, line, needle) ->
     { existsSync } = require "fs"
@@ -24,7 +32,7 @@ module.exports = Util =
     { spawn } = require "child_process"
 
     # If stored, return pathToPynsist
-    pathToPynsist = atom.config.get("pynsist.pathToPynsist")
+    pathToPynsist = @getConfig("pathToPynsist")
     if pathToPynsist.length > 0 and pathToPynsist isnt "pynsist"
       return callback(pathToPynsist)
 
@@ -43,7 +51,7 @@ module.exports = Util =
   isPathSetup: () ->
     { access, constants} = require "fs"
 
-    pathToPynsist = atom.config.get("pynsist.pathToPynsist")
+    pathToPynsist = @getConfig("pathToPynsist")
 
     access pathToPynsist, constants.R_OK | constants.W_OK, (error) ->
       if error
@@ -74,7 +82,7 @@ module.exports = Util =
 
     if outFile isnt ""
       message =  "Successfully compiled installer"
-      if platform() is "win32" or atom.config.get("pynsist.useWineToRun") is true
+      if platform() is "win32" or @getConfig("useWineToRun") is true
         buttons.push({
           text: "Run Installer"
           className: "icon icon-playback-play"
@@ -104,7 +112,7 @@ module.exports = Util =
       message,
       dismissable: true,
       buttons: buttons
-    ) if atom.config.get("pynsist.showBuildNotifications")
+    ) if @getConfig("showBuildNotifications")
 
   runInstaller: (outFile) ->
     { spawn } = require "child_process"
@@ -118,7 +126,7 @@ module.exports = Util =
       catch error
         atom.notifications.addWarning("**pynsist**", detail: error, dismissable: true)
 
-    else if atom.config.get("pynsist.useWineToRun") is true
+    else if @getConfig("useWineToRun") is true
       try
         spawn "wine", [ outFile ]
       catch error

@@ -41,7 +41,7 @@ module.exports = PynsistCore =
   activate: (state) ->
     { CompositeDisposable } = require "atom"
     { generate } = require "./pynsist"
-    { isPathSetup } = require "./util"
+    { getConfig, isPathSetup } = require "./util"
     { platform } = require "os"
     { satisfyDependencies } = require "atom-satisfy-dependencies"
 
@@ -52,8 +52,8 @@ module.exports = PynsistCore =
     @subscriptions.add atom.commands.add "atom-workspace", "pynsist:generate-script": => generate(@consolePanel, false)
     @subscriptions.add atom.commands.add "atom-workspace", "pynsist:compile-installer": => generate(@consolePanel, true)
 
-    satisfyDependencies("pynsist") if atom.config.get("pynsist.manageDependencies") is true
-    isPathSetup() if atom.config.get("pynsist.mutePathWarning") is false and platform() is "win32"
+    satisfyDependencies("pynsist") if getConfig("manageDependencies") is true
+    isPathSetup() if getConfig("mutePathWarning") is false and platform() is "win32"
 
   deactivate: ->
     @subscriptions?.dispose()

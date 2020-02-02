@@ -1,7 +1,7 @@
 module.exports = Pynsist =
 
   generate: (consolePanel, runMakensis) ->
-    { clearConsole, detectOutput, getPath, notifyOnSucess } = require "./util"
+    { clearConsole, detectOutput, getConfig, getPath, notifyOnSucess } = require "./util"
     { spawn, exec } = require "child_process"
     { dirname } = require "path"
 
@@ -47,9 +47,9 @@ module.exports = Pynsist =
 
         pynsist.on "close", ( errorCode ) ->
           if errorCode is 0 and outScript isnt ""
-            return notifyOnSucess(outScript, outFile) if atom.config.get("pynsist.showBuildNotifications")
+            return notifyOnSucess(outScript, outFile) if getConfig("showBuildNotifications")
           else
-            atom.notifications.addError("**pynsist**", detail: "Something went wrong. See the console for details.", dismissable: false) if atom.config.get("pynsist.showBuildNotifications")
+            atom.notifications.addError("**pynsist**", detail: "Something went wrong. See the console for details.", dismissable: false) if getConfig("showBuildNotifications")
     else
       # Something went wrong
       atom.beep()
