@@ -1,4 +1,4 @@
-module.exports = PynsistCore =
+module.exports =
   config:
     pathToPynsist:
       title: "Path To Pynsist"
@@ -38,7 +38,7 @@ module.exports = PynsistCore =
       order: 5
   subscriptions: null
 
-  activate: (state) ->
+  activate: () ->
     { CompositeDisposable } = require "atom"
     { generate } = require "./pynsist"
     { getConfig, isPathSetup } = require "./util"

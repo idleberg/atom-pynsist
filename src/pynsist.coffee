@@ -1,8 +1,7 @@
-module.exports = Pynsist =
-
+module.exports =
   generate: (consolePanel, runMakensis) ->
     { clearConsole, detectOutput, getConfig, getPath, notifyOnSucess } = require "./util"
-    { spawn, exec } = require "child_process"
+    { spawn } = require "child_process"
     { dirname } = require "path"
 
     editor = atom.workspace.getActiveTextEditor()

@@ -5,10 +5,14 @@ npm-debug.log*
 shrinkwrap.yaml
 vendor/
 yarn-error.log
+yarn.lock
 
 # Development Files
+.eslintcache
 *.d.ts
 *.map
 
 # Project-specific
+grammars/
+snippets/
 todo.md
