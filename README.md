@@ -3,7 +3,7 @@
 [![apm](https://flat.badgen.net/apm/license/pynsist)](https://atom.io/packages/pynsist)
 [![apm](https://flat.badgen.net/apm/v/pynsist)](https://atom.io/packages/pynsist)
 [![apm](https://flat.badgen.net/apm/dl/pynsist)](https://atom.io/packages/pynsist)
-[![CircleCI](https://flat.badgen.net/circleci/github/idleberg/atom-pynsist)](https://circleci.com/gh/idleberg/atom-pynsist)
+[![CI](https://img.shields.io/github/workflow/status/idleberg/atom-pynsist/CI?style=flat-square)](https://github.com/idleberg/atom-pynsist/actions)
 [![David](https://flat.badgen.net/david/dep/idleberg/atom-pynsist)](https://david-dm.org/idleberg/atom-pynsist)
 
 Snippets and build-system for [pynsist](https://pypi.python.org/pypi/pynsist), a tool to build Windows installers for your Python applications.
